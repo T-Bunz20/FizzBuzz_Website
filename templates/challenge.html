@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: #111111;
+            color: white;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        h1 {
+            font-size: 48px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>{{ title }}</h1>
+        <ul>
+            {% for num in numbers %}
+            <li>
+                {{num}}
+            </li>
+            {% endfor %}
+        </ul>
+
+
+    </div>
+</body>
+
+</html>
