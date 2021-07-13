@@ -17,3 +17,17 @@ def start(max_num):
         l.append(element)
 
     return render_template('challenge.html', title=title, numbers=l)
+
+@app.route('/words/<string:word>')
+def words(word):
+    word = word.upper()
+    title = "Anagrams for " + word + ":"
+    f = open("words.txt")
+    word_list = f.read().splitlines()
+    anagrams = []
+    for i in word_list:
+        if sorted(i) == sorted(word):
+            anagrams.append(i)
+
+
+    return render_template('challenge.html', title=title, numbers=anagrams)
