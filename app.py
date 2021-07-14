@@ -31,3 +31,40 @@ def words(word):
 
 
     return render_template('challenge.html', title=title, numbers=anagrams)
+
+@app.route('/dictionary')
+def dictionary_start():
+    title = "Dictionary"
+    text = "Choose a letter!"
+    real_word = ""
+    choices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n",
+     "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+
+
+    return render_template('dictionary.html', title=title, text=text, real_word=real_word, choices=choices)
+
+@app.route('/dictionary/<string:word>')
+def dictionary(word):
+    title = "Dictionary"
+    count = 0
+    f = open("words.txt")
+    real_word = ""
+    word_list = f.read().splitlines()
+    for i in word_list:
+        if i == word.upper():
+            real_word = word + " is a real word!"
+        if i.startswith(word.upper()):
+            count += 1
+
+    if count == 1:
+        text = "1 word with the prefix " + word + "!"
+    elif count == 0:
+        text = "There are no words with the prefix " + word + "."
+    else:
+        text = str(count) + " words with the prefix " + word + "!"
+
+    choices = [word+"a", word+"b", word+"c", word+"d", word+"e", word+"f", word+"g", word+"h", 
+    word+"i", word+"j", word+"k", word+"l", word+"m", word+"n", word+"o", word+"p", word+"q", 
+    word+"r", word+"s", word+"t", word+"u", word+"v", word+"w", word+"x", word+"y", word+"z"]
+
+    return render_template('dictionary.html', title=title, text=text, real_word=real_word, choices=choices)
