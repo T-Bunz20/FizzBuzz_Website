@@ -11,7 +11,15 @@
         h1 {
             font-size: 48px;
         }
+        
+        h2 {
+            font-size: 40px;
+        }
 
+        a {
+            color: white;
+            text-decoration: none;
+        }
         .container {
             max-width: 800px;
             margin: 100px auto;
@@ -21,15 +29,16 @@
 
 <body>
     <div class="container">
-        <h1>{{ title }}</h1>
-        <ul>
-            {% for num in numbers %}
-            <li>
-                {{num}}
-            </li>
-            {% endfor %}
-        </ul>
-
+        {% block container %}
+            <h1>{{ title }}</h1>
+            <ul>
+                {% for num in numbers %}
+                    <li>
+                        {{num}}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endblock %}
 
     </div>
 </body>
