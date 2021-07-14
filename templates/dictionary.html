@@ -1,0 +1,16 @@
+{% extends "challenge.html" %}
+
+{% block container %}
+
+    <h1> {{ title }} </h1>
+    <h2> {{ real_word }} </h2>
+    <p> {{ text }} </p>
+
+    <ul>
+        {% for choice in choices %}
+            <li>
+                <a href="{{url_for('dictionary', word=choice)}}">{{choice}}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
